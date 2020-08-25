@@ -79,7 +79,7 @@ function App() {
     _handleRemoveRepository = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
     _regenerator["default"].mark(function _callee2(id) {
-      var response;
+      var updatedRepositories;
       return _regenerator["default"].wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -88,14 +88,12 @@ function App() {
               return _api["default"]["delete"]("repositories/".concat(id));
 
             case 2:
-              _context2.next = 4;
-              return _api["default"].get("repositories");
+              updatedRepositories = repositories.filter(function (repo) {
+                return repo.id !== id;
+              });
+              setRepositories(updatedRepositories);
 
             case 4:
-              response = _context2.sent;
-              setRepositories(response.data);
-
-            case 6:
             case "end":
               return _context2.stop();
           }
